@@ -10,7 +10,7 @@ namespace VolunteerSystem.Models
         public String firstName { get; set; }
         public String lastName { get; set; }
         public String userName { get; set; }
-        public String password { get; set; }        // strong hash algorithm expected.
+        public String password { get; set; }                // strong hash algorithm expected.
 
         private ArrayList workCenters = new ArrayList();   // centers where the volunteer prefers to work.
         private ArrayList interests = new ArrayList();
