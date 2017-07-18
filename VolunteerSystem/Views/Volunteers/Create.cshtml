@@ -1,0 +1,150 @@
+@model VolunteerSystem.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Volunteer</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="firstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="firstName" class="form-control" />
+                <span asp-validation-for="firstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="lastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="lastName" class="form-control" />
+                <span asp-validation-for="lastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="userName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="userName" class="form-control" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="password" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="homeNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="homeNumber" class="form-control" />
+                <span asp-validation-for="homeNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="workNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="workNumber" class="form-control" />
+                <span asp-validation-for="workNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="cellNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="cellNumber" class="form-control" />
+                <span asp-validation-for="cellNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="emailAddress" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="emailAddress" class="form-control" />
+                <span asp-validation-for="emailAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="eduBackground" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="eduBackground" class="form-control" />
+                <span asp-validation-for="eduBackground" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="emergencyName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="emergencyName" class="form-control" />
+                <span asp-validation-for="emergencyName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="emergencyPhone" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="emergencyPhone" class="form-control" />
+                <span asp-validation-for="emergencyPhone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="emergencyEmail" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="emergencyEmail" class="form-control" />
+                <span asp-validation-for="emergencyEmail" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="emergencyAddr" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="emergencyAddr" class="form-control" />
+                <span asp-validation-for="emergencyAddr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="isLicenseOnFile" />
+                    <label asp-for="isLicenseOnFile"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="isSSCardOnFile" />
+                    <label asp-for="isSSCardOnFile"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="isApproved" />
+                    <label asp-for="isApproved"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

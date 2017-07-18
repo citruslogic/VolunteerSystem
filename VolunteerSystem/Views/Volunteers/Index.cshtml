@@ -1,0 +1,131 @@
+@model IEnumerable<VolunteerSystem.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.firstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.userName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.homeNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.workNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cellNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.eduBackground)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emergencyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emergencyPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emergencyEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emergencyAddr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isLicenseOnFile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isSSCardOnFile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isApproved)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.homeNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.workNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cellNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eduBackground)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emergencyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emergencyPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emergencyEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emergencyAddr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isLicenseOnFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isSSCardOnFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isApproved)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

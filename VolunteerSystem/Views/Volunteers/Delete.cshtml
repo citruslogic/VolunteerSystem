@@ -1,0 +1,125 @@
+@model VolunteerSystem.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Volunteer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="ID" />
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.homeNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.homeNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.workNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.workNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cellNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cellNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emailAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.eduBackground)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.eduBackground)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emergencyName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emergencyName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emergencyPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emergencyPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emergencyEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emergencyEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emergencyAddr)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emergencyAddr)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isLicenseOnFile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isLicenseOnFile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isSSCardOnFile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isSSCardOnFile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isApproved)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isApproved)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

@@ -7,15 +7,16 @@ namespace VolunteerSystem.Models
 {
     public class Volunteer
     {
+        public int ID { get; set; }
         public String firstName { get; set; }
         public String lastName { get; set; }
         public String userName { get; set; }
-        public String password { get; set; }                // strong hash algorithm expected.
+        public String password { get; set; }               // strong hash algorithm expected.
 
         private ArrayList workCenters = new ArrayList();   // centers where the volunteer prefers to work.
         private ArrayList interests = new ArrayList();
 
-        public DateTime[] availibility { get; set; }
+        //public DateTime[] availibility { get; set; }
 
         public String address { get; set; }
         public String homeNumber { get; set; }
@@ -24,7 +25,7 @@ namespace VolunteerSystem.Models
         public String emailAddress { get; set; }
 
         public String eduBackground { get; set; }
-        private ArrayList curLicenses = new ArrayList();
+        //private ArrayList curLicenses = new ArrayList();
 
         public String emergencyName { get; set; }
         public String emergencyPhone { get; set; }
