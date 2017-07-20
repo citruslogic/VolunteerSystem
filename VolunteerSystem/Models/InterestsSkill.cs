@@ -10,6 +10,6 @@ namespace VolunteerSystem.Models
         public int InterestsSkillsID { get; set; }
         public int VolunteerID { get; set; }
 
-        public List<string> InterestsSkills { get; set; }
+        public string InterestsSkills { get; set; }
     }
 }

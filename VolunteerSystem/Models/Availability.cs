@@ -8,7 +8,8 @@ namespace VolunteerSystem.Models
     public class Availability
     {
         public int AvailabilityID { get; set; }
+        public int VolunteerID { get; set; }
 
-        public List<DateTime> AvailableTimes { get; set; }
+        public DateTime AvailableTime { get; set; }
     }
 }
