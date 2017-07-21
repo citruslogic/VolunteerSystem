@@ -30,5 +30,7 @@ namespace VolunteerSystem.Models
 
         public ICollection<Availability> AvailableTimes { get; set; }
 
+        public ICollection<EmergencyContact> EmergencyContacts { get; set; }
+
     }
 }
