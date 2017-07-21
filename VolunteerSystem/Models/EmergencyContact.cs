@@ -8,7 +8,7 @@ namespace VolunteerSystem.Models
     public class EmergencyContact
     {
         public int VolunteerID { get; set; }
-        public int EContactID { get; set; }
+        public int EmergencyContactID { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
