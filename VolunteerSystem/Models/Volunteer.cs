@@ -20,15 +20,15 @@ namespace VolunteerSystem.Models
         public string WorkPhone { get; set; }
         public string CellPhone { get; set; }
         public string Email { get; set; }
-        public virtual ICollection<EducationBackground> Background { get; set; }
+        public ICollection<EducationBackground> Background { get; set; }
 
-        public virtual ICollection<CurrentLicense> Licenses { get; set; }
+        public ICollection<CurrentLicense> Licenses { get; set; }
 
-        public virtual ICollection<Center> Centers { get; set; }
+        public ICollection<Center> Centers { get; set; }
 
-        public virtual ICollection<InterestsSkill> InterestsSkills { get; set; }
+        public ICollection<InterestsSkill> InterestsSkills { get; set; }
 
-        public virtual ICollection<Availability> AvailableTimes { get; set; }
+        public ICollection<Availability> AvailableTimes { get; set; }
 
     }
 }
