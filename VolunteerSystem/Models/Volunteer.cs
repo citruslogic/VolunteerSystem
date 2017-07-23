@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,34 +8,29 @@ namespace VolunteerSystem.Models
     public class Volunteer
     {
         public int ID { get; set; }
-        public String firstName { get; set; }
-        public String lastName { get; set; }
-        public String userName { get; set; }
-        public String password { get; set; }               // strong hash algorithm expected.
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserName {get; set; }
 
-        private ArrayList workCenters = new ArrayList();   // centers where the volunteer prefers to work.
-        private ArrayList interests = new ArrayList();
+        public string Password { get; set; }
 
-        //public DateTime[] availibility { get; set; }
+        
+        public string Address { get; set; }
+        public string HomePhone { get; set; }
+        public string WorkPhone { get; set; }
+        public string CellPhone { get; set; }
+        public string Email { get; set; }
+        public ICollection<EducationBackground> Background { get; set; }
 
-        public String address { get; set; }
-        public String homeNumber { get; set; }
-        public String workNumber { get; set; }
-        public String cellNumber { get; set; }
-        public String emailAddress { get; set; }
+        public ICollection<CurrentLicense> Licenses { get; set; }
 
-        public String eduBackground { get; set; }
-        //private ArrayList curLicenses = new ArrayList();
+        public ICollection<Center> Centers { get; set; }
 
-        public String emergencyName { get; set; }
-        public String emergencyPhone { get; set; }
-        public String emergencyEmail { get; set; }
-        public String emergencyAddr { get; set; }
+        public ICollection<InterestsSkill> InterestsSkills { get; set; }
 
-        public Boolean isLicenseOnFile { get; set; }
-        public Boolean isSSCardOnFile { get; set; }
+        public ICollection<Availability> AvailableTimes { get; set; }
 
-        public Boolean isApproved { get; set; }
+        public ICollection<EmergencyContact> EmergencyContacts { get; set; }
 
     }
 }
