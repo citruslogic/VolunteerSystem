@@ -10,6 +10,7 @@ namespace VolunteerSystem.Models
         public int AvailabilityID { get; set; }
         public int VolunteerID { get; set; }
 
-        public DateTime AvailableTime { get; set; }
+        public DateTime AvailableStartTime { get; set; }
+        public DateTime AvailableEndTime { get; set; }
     }
 }

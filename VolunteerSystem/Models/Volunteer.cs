@@ -32,5 +32,11 @@ namespace VolunteerSystem.Models
 
         public ICollection<EmergencyContact> EmergencyContacts { get; set; }
 
+        public Boolean LicenseOnFile { get; set; }
+        
+        public Boolean SSCardOnFile { get; set; }
+
+        public Boolean Approved { get; set; }
+
     }
 }
