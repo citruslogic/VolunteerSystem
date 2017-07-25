@@ -8,6 +8,10 @@ namespace VolunteerSystem.Models
     public class Volunteer
     {
         public int ID { get; set; }
+
+        //Require an Login ID for easy tracking
+        public string LoginID { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName {get; set; }
