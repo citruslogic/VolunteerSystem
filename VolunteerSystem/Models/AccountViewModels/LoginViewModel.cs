@@ -12,8 +12,12 @@ namespace VolunteerSystem.Models.AccountViewModels
         // Unless it's ran off of email address.
         // DT  I'm trying to get a first Name and Last Name in the login page.  
         [Required]
-        [Volunteer.LoginID]
+        
+        //I removed the [loginid] becasue I assume id doesn't need to be validated?
+        //Trying to figure out how it can be validated
+
         public string LoginID { get; set; }
+       
 
         //I believe I did the above right.  Please let me know if I didn't
 
