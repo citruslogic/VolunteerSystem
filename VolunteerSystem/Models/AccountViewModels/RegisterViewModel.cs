@@ -7,7 +7,16 @@ using System.Threading.Tasks;
 namespace VolunteerSystem.Models.AccountViewModels
 {
     public class RegisterViewModel
+
+
     {
+        //Adding a Login ID for account tracking//
+
+            [Required]
+            [StringLength(20)]
+            [Display(Name = "Login ID")]
+            public string LoginID { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

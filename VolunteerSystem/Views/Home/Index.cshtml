@@ -6,17 +6,41 @@
 <div class="jumbotron">
     <h1>Volunteer Management System</h1>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Welcome to the Volunteer Management System (VMS)</h2>
-        <p>
-            The Volunteer Management System helps organization leaders assemble and manage volunteers for
-            events or opportunities. 
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Download it</h2>
-        <p>You can download new versions of the Volunteer System from its github repository.</p>
-        <p><a class="btn btn-default" href="https://www.github.com/citruslogic/VolunteerSystem">Download &raquo;</a></p>
-    </div>
-</div>
+
+<!--Inserted a login for the home page to allow users to log in.  This should take you to the Administer page-->
+ <!--<section>
+    <form asp-controller="Account" asp-action="_LoginPartial" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+        <h4>Use a local account to log in.</h4>
+        <hr />
+
+        <!--Inserting Login field for tracking purposes-->
+         <!--><div class="form-group">
+            <label asp-for="LoginID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LoginID" class="form-control" />
+                <span asp-validation-for="LoginID" class="text-danger"></span>
+            </div>
+        </div>
+        </form>
+        </section>
+<!--End of insertion-->
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Welcome to the Volunteer Management System (VMS)</h2>
+                <p>
+                    The Volunteer Management System helps organization leaders assemble and manage volunteers for
+                    events or opportunities.
+<!--DT  added for direction for users.
+    I'm trying to figure out how to get the Login ID box onto the home page.  I get an error if I just cut and paste from the login and register view pages
+    -->
+                   <p> If you are new, please register for an account.</p>
+
+                   <p> Returining users please log in </p>
+            </div>
+            <div class="col-md-4">
+                <h2>Download it</h2>
+                <p>You can download new versions of the Volunteer System from its github repository.</p>
+                <p><a class="btn btn-default" href="https://www.github.com/citruslogic/VolunteerSystem">Download &raquo;</a></p>
+            </div>
+        </div>

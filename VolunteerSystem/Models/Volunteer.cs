@@ -12,7 +12,7 @@ namespace VolunteerSystem.Models
         //Require an Login ID for easy tracking
         public string LoginID { get; set; }
 
-        //In the LoginViewModel.cs it says this attribute doesn't exist.  Why?
+        
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
