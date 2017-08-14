@@ -31,7 +31,7 @@ namespace VolunteerSystem.Data
 
             var availabilities = new Availability[]
             {
-                new Availability{AvailabilityID=1, VolunteerID=1, AvailableStartTime=DateTime.Parse("10:45 AM"),
+                new Availability{VolunteerID=1, AvailableStartTime=DateTime.Parse("10:45 AM"),
                     AvailableEndTime=DateTime.Parse("5:30 PM")}
             };
 
@@ -64,6 +64,41 @@ namespace VolunteerSystem.Data
                 context.CurrentLicenses.Add(l);
             }
             context.SaveChanges();
+
+            var education = new EducationBackground[]
+            {
+                new EducationBackground{EducationBackgroundID=1, VolunteerID=1, Background="BA Social Services" }
+
+            };
+
+            foreach (EducationBackground e in education)
+            {
+                context.EducationBackgrounds.Add(e);
+            }
+            context.SaveChanges();
+
+            var contacts = new EmergencyContact[]
+            {
+                new EmergencyContact{EmergencyContactID=1, VolunteerID=1, Address="1704 Whispering Forest Dr.", FirstName="Fred", LastName="Jackson", PhoneNumber="9045555555" }
+            };
+
+            foreach (EmergencyContact ec in contacts)
+            {
+                context.EmergencyContacts.Add(ec);
+            }
+            context.SaveChanges();
+
+            var interests = new InterestsSkill[]
+            {
+                new InterestsSkill{VolunteerID=1, ID=1, InterestsSkills="Microsoft Excel, Skiing"}
+            };
+
+            foreach (InterestsSkill s in interests)
+            {
+                context.InterestsSkills.Add(s);
+            }
+            context.SaveChanges();
+
         }
     }
 }
