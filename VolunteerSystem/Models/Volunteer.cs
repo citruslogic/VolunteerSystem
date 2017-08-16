@@ -20,6 +20,7 @@ namespace VolunteerSystem.Models
         public string WorkPhone { get; set; }
         public string CellPhone { get; set; }
         public string Email { get; set; }
+
         public ICollection<EducationBackground> Background { get; set; }
 
         public ICollection<CurrentLicense> Licenses { get; set; }

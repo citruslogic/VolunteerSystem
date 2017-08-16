@@ -90,7 +90,7 @@ namespace VolunteerSystem.Data
 
             var interests = new InterestsSkill[]
             {
-                new InterestsSkill{VolunteerID=1, ID=1, InterestsSkills="Microsoft Excel, Skiing"}
+                new InterestsSkill{InterestsSkillID=1, VolunteerID=1, InterestsSkills="Microsoft Excel, Skiing"}
             };
 
             foreach (InterestsSkill s in interests)

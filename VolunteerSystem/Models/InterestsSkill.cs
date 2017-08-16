@@ -7,7 +7,7 @@ namespace VolunteerSystem.Models
 {
     public class InterestsSkill
     {
-        public int ID { get; set; }
+        public int InterestsSkillID { get; set; }
         public int VolunteerID { get; set; }
 
         public string InterestsSkills { get; set; }
