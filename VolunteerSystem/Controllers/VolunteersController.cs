@@ -20,9 +20,36 @@ namespace VolunteerSystem.Controllers
         }
 
         // GET: Volunteers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            return View(await _context.Volunteers.ToListAsync());
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["UsernameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "uname_desc": "";
+            ViewData["currentFilter"] = searchString;
+   
+            var volunteers = from v in _context.Volunteers
+                             select v;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                volunteers = volunteers.Where(v => v.LastName.Contains(searchString)
+                        || v.FirstName.Contains(searchString));
+            }
+
+
+            switch (sortOrder) 
+            {
+                case "name_desc":
+                    volunteers = volunteers.OrderByDescending(v => v.LastName);
+                    break;
+                case "uname_desc":
+                    volunteers = volunteers.OrderByDescending(v => v.UserName);
+                    break;
+                default: 
+                    volunteers = volunteers.OrderBy(v => v.LastName);
+                    break;
+            }
+
+            return View(await volunteers.AsNoTracking().ToListAsync());
         }
 
         // GET: Volunteers/Details/5
