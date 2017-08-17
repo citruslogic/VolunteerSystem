@@ -106,6 +106,47 @@
                 }
             </table>
         </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Background</th>
+                </tr>
+                @foreach (var volunteer in Model.Background)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.Background) 
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Emergency Contacts</th>
+                </tr>
+                @foreach (var volunteer in Model.EmergencyContacts)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.Address)
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </dd>
     </dl>
 </div>
 <div>

@@ -35,6 +35,7 @@ namespace VolunteerSystem.Controllers
 
             var volunteer = await _context.Volunteers
                 .Include(v => v.AvailableTimes)
+                .Include(v => v.EmergencyContacts)
                 .Include(v => v.Background)
                 .Include(v => v.Centers)
                 .Include(v => v.InterestsSkills)

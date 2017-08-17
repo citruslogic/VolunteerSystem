@@ -17,7 +17,7 @@ namespace VolunteerSystem.Data
         public DbSet<Availability> Availabilities { get; set; }
         public DbSet<Center> Centers { get; set; }
         public DbSet<CurrentLicense> CurrentLicenses { get; set; }
-        public DbSet<EducationBackground> EducationBackgrounds { get; set; }
+        public DbSet<EducationBackground> EducationBackground { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public DbSet<InterestsSkill> InterestsSkills { get; set; }
 

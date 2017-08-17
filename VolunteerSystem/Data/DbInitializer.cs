@@ -73,7 +73,7 @@ namespace VolunteerSystem.Data
 
             foreach (EducationBackground e in education)
             {
-                context.EducationBackgrounds.Add(e);
+                context.EducationBackground.Add(e);
             }
             context.SaveChanges();
 
