@@ -83,6 +83,34 @@
             @Html.DisplayFor(model => model.Approved)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.Centers) 
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Center Name</th>
+                    <th>Center Address</th>
+                    <th>Center Phone</th>
+                </tr>
+                @foreach (var volunteer in Model.Centers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.CenterName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.CenterAddr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => volunteer.CenterPhone)
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.AvailableTimes)
         </dt>
         <dd>
