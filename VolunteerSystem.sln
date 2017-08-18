@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolunteerSystem", "VolunteerSystem\VolunteerSystem.csproj", "{FEE73898-A8DB-4829-830F-C8E17F3689A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolunteerSystem", "VolunteerSystem\VolunteerSystem.csproj", "{FEE73898-A8DB-4829-830F-C8E17F3689A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EC61681-896E-4D54-B18E-E0AF61A90393}
 	EndGlobalSection
 EndGlobal

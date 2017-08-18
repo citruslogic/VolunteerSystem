@@ -20,12 +20,29 @@ namespace VolunteerSystem.Controllers
         }
 
         // GET: Volunteers
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(
+            string sortOrder, 
+            string currentFilter,
+            string searchString,
+            int? page)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["UsernameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "uname_desc": "";
             ViewData["currentFilter"] = searchString;
-   
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["currentFilter"] = searchString;
+
+
             var volunteers = from v in _context.Volunteers
                              select v;
 
@@ -49,7 +66,8 @@ namespace VolunteerSystem.Controllers
                     break;
             }
 
-            return View(await volunteers.AsNoTracking().ToListAsync());
+            int pageSize = 3;
+            return View(await PaginatedList<Volunteer>.CreateAsync(volunteers.AsNoTracking(), page ?? 1, pageSize));
         }
 
         // GET: Volunteers/Details/5
