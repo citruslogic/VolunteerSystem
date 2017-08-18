@@ -8,8 +8,8 @@ using VolunteerSystem.Data;
 namespace VolunteerSystem.Migrations
 {
     [DbContext(typeof(VolunteerContext))]
-    [Migration("20170818151903_VolunteerContext")]
-    partial class VolunteerContext
+    [Migration("20170818191350_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

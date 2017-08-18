@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace VolunteerSystem.Models
 {
     public class Volunteer
     {
         public int ID { get; set; }
+        [StringLength(50)]
         public string FirstName { get; set; }
+        [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
         public string LastName { get; set; }
         public string UserName {get; set; }
 
