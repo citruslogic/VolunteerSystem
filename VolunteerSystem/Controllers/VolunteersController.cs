@@ -23,17 +23,17 @@ namespace VolunteerSystem.Controllers
         public async Task<IActionResult> Index(
             string sortOrder, 
             string currentFilter,
-            string searchString,
-            int? page)
+            string searchString)
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["UsernameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "uname_desc": "";
+            ViewData["StatusSortParm"] = String.IsNullOrEmpty(sortOrder) ? "status" : "";
             ViewData["currentFilter"] = searchString;
 
             if (searchString != null)
             {
-                page = 1;
+               
             }
             else
             {
@@ -60,6 +60,9 @@ namespace VolunteerSystem.Controllers
                     break;
                 case "uname_desc":
                     volunteers = volunteers.OrderByDescending(v => v.UserName);
+                    break;
+                case "status":
+                    volunteers = volunteers.OrderBy(v => v.Status);
                     break;
                 default: 
                     volunteers = volunteers.OrderBy(v => v.LastName);
@@ -105,7 +108,8 @@ namespace VolunteerSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,UserName,Password,Address,HomePhone,WorkPhone,CellPhone,Email,LicenseOnFile,SSCardOnFile,Approved")] Volunteer volunteer)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,UserName,Password" +
+            ",Address,HomePhone,WorkPhone,CellPhone,Email,LicenseOnFile,SSCardOnFile,Status")] Volunteer volunteer)
         {
             try {
 
@@ -124,6 +128,7 @@ namespace VolunteerSystem.Controllers
                 "see your system administrator.");
 
             }
+
             return View(volunteer);
         }
 
@@ -148,7 +153,8 @@ namespace VolunteerSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,UserName,Password,Address,HomePhone,WorkPhone,CellPhone,Email,LicenseOnFile,SSCardOnFile,Approved")] Volunteer volunteer)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,UserName,Password,Address," +
+            "HomePhone,WorkPhone,CellPhone,Email,LicenseOnFile,SSCardOnFile,Status")] Volunteer volunteer)
         {
             if (id != volunteer.ID)
             {
@@ -162,7 +168,7 @@ namespace VolunteerSystem.Controllers
                 "",
                 v => volunteer.FirstName, v => volunteer.LastName, v => volunteer.UserName, v => volunteer.Password, 
                 v => volunteer.Address, v => volunteer.HomePhone, v => volunteer.WorkPhone, v => volunteer.CellPhone,
-                v => volunteer.Email, v => volunteer.LicenseOnFile, v => volunteer.SSCardOnFile, v => volunteer.Approved))
+                v => volunteer.Email, v => volunteer.LicenseOnFile, v => volunteer.SSCardOnFile, v => volunteer.Status))
                 {
                 try 
                 {
@@ -177,9 +183,35 @@ namespace VolunteerSystem.Controllers
                     "see your system administrator.");
                 }
             }
+
             return View(volunteer);
         }
-        
+
+        private IEnumerable<SelectListItem> GetSelectListItems()
+        {
+            var selectList = new List<SelectListItem>();
+
+            // Get all values of the Industry enum
+            var enumValues = Enum.GetValues(typeof(Status)) as Status[];
+            if (enumValues == null)
+                return null;
+
+            foreach (var enumValue in enumValues)
+            {
+                // Create a new SelectListItem element and set its 
+                // Value and Text to the enum value and description.
+                selectList.Add(new SelectListItem
+                {
+                    Value = enumValue.ToString(),
+                    // GetIndustryName just returns the Display.Name value
+                    // of the enum - check out the next chapter for the code of this function.
+                    //Text = GetIndustryName(enumValue)
+                });
+            }
+
+            return selectList;
+        }
+
 
         // GET: Volunteers/Delete/5
         public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)

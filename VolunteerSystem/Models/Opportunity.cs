@@ -9,6 +9,7 @@ namespace VolunteerSystem.Models
 {
     public class Opportunity
     {
+        [Key]
         public int OpportunityID { get; set; }
         public int VolunteerID { get; set; }
 

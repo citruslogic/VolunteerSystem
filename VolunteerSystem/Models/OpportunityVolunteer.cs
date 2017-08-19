@@ -10,8 +10,10 @@ namespace VolunteerSystem.Models
 {
     public class OpportunityVolunteer
     {
-        public int VolunteerID { get; set; }
+        [Key]
         public int OpportunityID { get; set; }
+        public int VolunteerID { get; set; }
+
 
         public Volunteer Volunteer { get; set; }
         public Opportunity Opportunity { get; set; }
