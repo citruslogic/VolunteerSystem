@@ -66,8 +66,8 @@ namespace VolunteerSystem.Controllers
                     break;
             }
 
-            int pageSize = 3;
-            return View(await PaginatedList<Volunteer>.CreateAsync(volunteers.AsNoTracking(), page ?? 1, pageSize));
+            return View(await volunteers.AsNoTracking().ToListAsync());
+
         }
 
         // GET: Volunteers/Details/5

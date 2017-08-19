@@ -12,6 +12,9 @@ namespace VolunteerSystem.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "First Name")]
+
+        
+
         public string FirstName { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Last name cannot be longer than 50 characters.")]
