@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace VolunteerSystem.Models.AccountViewModels
 {
-    public class ExternalLoginConfirmationViewModel
+    public class LoginID
     {
-       
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        
+        public string Login { get; set; }
+
+
     }
 }
