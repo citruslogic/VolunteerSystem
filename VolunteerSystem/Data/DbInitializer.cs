@@ -29,6 +29,33 @@ namespace VolunteerSystem.Data
             }
             context.SaveChanges();
 
+            var opportunities = new Opportunity[]
+            {
+                new Opportunity{ Description="A new community outreach activity.", OpportunityName="Community Outreach", OpportunityDate=DateTime.Parse("2005-09-01"),
+                OpportunityID = volunteers.Single( v => v.LastName == "Timothy").ID}
+
+                
+            };
+
+            foreach (Opportunity o in opportunities)
+            {
+                context.Opportunities.Add(o);
+            }
+            context.SaveChanges();
+
+
+            var opportunityVolunteers = new OpportunityVolunteer[]
+            {
+                new OpportunityVolunteer { OpportunityID = opportunities.Single(o => o.OpportunityName == "Community Outreach" ).OpportunityID,
+                        VolunteerID = volunteers.Single(v => v.LastName == "Timothy").ID}
+            };
+
+            foreach (OpportunityVolunteer ov in opportunityVolunteers)
+            {
+                context.OpportunityVolunteers.Add(ov);
+            }
+            context.SaveChanges();
+
             var availabilities = new Availability[]
             {
                 new Availability{VolunteerID=1, AvailableStartTime=DateTime.Parse("10:45 AM"),

@@ -20,6 +20,8 @@ namespace VolunteerSystem.Data
         public DbSet<EducationBackground> EducationBackground { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public DbSet<InterestsSkill> InterestsSkills { get; set; }
+        public DbSet<Opportunity> Opportunities { get; set; }
+        public DbSet<OpportunityVolunteer> OpportunityVolunteers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,6 +33,11 @@ namespace VolunteerSystem.Data
             modelBuilder.Entity<EmergencyContact>().ToTable("EmergencyContact");
             modelBuilder.Entity<InterestsSkill>().ToTable("InterestsSkill");
             modelBuilder.Entity<Volunteer>().ToTable("Volunteer");
+            modelBuilder.Entity<Opportunity>().ToTable("Opportunity");
+            modelBuilder.Entity<OpportunityVolunteer>().ToTable("OpportunityVolunteer");
+
+            modelBuilder.Entity<OpportunityVolunteer>()
+                .HasKey(o => new { o.OpportunityID, o.VolunteerID });
         }
     }
 }
