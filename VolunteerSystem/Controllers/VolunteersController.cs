@@ -20,6 +20,7 @@ namespace VolunteerSystem.Controllers
             _context = context;
         }
 
+        // Status.Pending should be treated as a default status. 
         private void SetViewBagStatusType(Status selectedStatus = Status.Pending)
         {
 
