@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VolunteerSystem.Data;
 using VolunteerSystem.Models;
+using System.Collections;
 
 namespace VolunteerSystem.Controllers
 {
@@ -16,24 +17,45 @@ namespace VolunteerSystem.Controllers
 
         public VolunteersController(VolunteerContext context)
         {
-            _context = context;    
+            _context = context;
         }
+
+        private void SetViewBagStatusType(Status selectedStatus)
+        {
+
+            IEnumerable<Status> values = Enum.GetValues(typeof(Status))
+                                             .Cast<Status>();
+
+            IEnumerable<SelectListItem> items = from value in values
+                                                select new SelectListItem
+                                                {
+
+                                                    Text = value.ToString(),
+                                                    Value = value.ToString(),
+                                                    Selected = value == selectedStatus,
+
+                                                };
+
+            ViewBag.Status = items;
+
+        }
+
 
         // GET: Volunteers
         public async Task<IActionResult> Index(
-            string sortOrder, 
+            string sortOrder,
             string currentFilter,
             string searchString)
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["UsernameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "uname_desc": "";
+            ViewData["UsernameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "uname_desc" : "";
             ViewData["StatusSortParm"] = String.IsNullOrEmpty(sortOrder) ? "status" : "";
             ViewData["currentFilter"] = searchString;
 
             if (searchString != null)
             {
-               
+
             }
             else
             {
@@ -53,7 +75,7 @@ namespace VolunteerSystem.Controllers
             }
 
 
-            switch (sortOrder) 
+            switch (sortOrder)
             {
                 case "name_desc":
                     volunteers = volunteers.OrderByDescending(v => v.LastName);
@@ -64,7 +86,7 @@ namespace VolunteerSystem.Controllers
                 case "status":
                     volunteers = volunteers.OrderBy(v => v.Status);
                     break;
-                default: 
+                default:
                     volunteers = volunteers.OrderBy(v => v.LastName);
                     break;
             }
@@ -88,11 +110,12 @@ namespace VolunteerSystem.Controllers
                 .Include(v => v.Centers)
                 .Include(v => v.InterestsSkills)
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.VolunteerID == id);
             if (volunteer == null)
             {
                 return NotFound();
             }
+
 
             return View(volunteer);
         }
@@ -111,7 +134,8 @@ namespace VolunteerSystem.Controllers
         public async Task<IActionResult> Create([Bind("FirstName,LastName,UserName,Password" +
             ",Address,HomePhone,WorkPhone,CellPhone,Email,LicenseOnFile,SSCardOnFile,Status")] Volunteer volunteer)
         {
-            try {
+            try
+            {
 
                 if (ModelState.IsValid)
                 {
@@ -119,8 +143,8 @@ namespace VolunteerSystem.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
-            } 
-            catch (DbUpdateException /* ex */) 
+            }
+            catch (DbUpdateException /* ex */)
             {
                 //Log the error (uncomment ex variable name and write a log.
                 ModelState.AddModelError("", "Unable to save changes. " +
@@ -128,6 +152,8 @@ namespace VolunteerSystem.Controllers
                 "see your system administrator.");
 
             }
+
+            SetViewBagStatusType(volunteer.Status);
 
             return View(volunteer);
         }
@@ -140,11 +166,15 @@ namespace VolunteerSystem.Controllers
                 return NotFound();
             }
 
-            var volunteer = await _context.Volunteers.SingleOrDefaultAsync(m => m.ID == id);
+            var volunteer = await _context.Volunteers.SingleOrDefaultAsync(m => m.VolunteerID == id);
             if (volunteer == null)
             {
                 return NotFound();
             }
+
+            SetViewBagStatusType(volunteer.Status);
+
+
             return View(volunteer);
         }
 
@@ -156,61 +186,39 @@ namespace VolunteerSystem.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,UserName,Password,Address," +
             "HomePhone,WorkPhone,CellPhone,Email,LicenseOnFile,SSCardOnFile,Status")] Volunteer volunteer)
         {
-            if (id != volunteer.ID)
+            if (id != volunteer.VolunteerID)
             {
                 return NotFound();
             }
 
-            var volunteerToUpdate = await _context.Volunteers.SingleOrDefaultAsync(v => v.ID == id);
+            var volunteerToUpdate = await _context.Volunteers.SingleOrDefaultAsync(v => v.VolunteerID == id);
 
             if (await TryUpdateModelAsync<Volunteer>(
-                volunteerToUpdate, 
+                volunteerToUpdate,
                 "",
-                v => volunteer.FirstName, v => volunteer.LastName, v => volunteer.UserName, v => volunteer.Password, 
+                v => volunteer.FirstName, v => volunteer.LastName, v => volunteer.UserName, v => volunteer.Password,
                 v => volunteer.Address, v => volunteer.HomePhone, v => volunteer.WorkPhone, v => volunteer.CellPhone,
                 v => volunteer.Email, v => volunteer.LicenseOnFile, v => volunteer.SSCardOnFile, v => volunteer.Status))
-                {
-                try 
+            {
+                try
                 {
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
-                catch (DbUpdateException /* ex */) 
+                catch (DbUpdateException /* ex */)
                 {
-                  //Log the error (uncomment ex variable name and write a log.)
+                    //Log the error (uncomment ex variable name and write a log.)
                     ModelState.AddModelError("", "Unable to save changes. " +
                     "Try again, and if the problem persists, " +
                     "see your system administrator.");
                 }
             }
 
+            SetViewBagStatusType(volunteer.Status);
+
             return View(volunteer);
         }
 
-        private IEnumerable<SelectListItem> GetSelectListItems()
-        {
-            var selectList = new List<SelectListItem>();
-
-            // Get all values of the Industry enum
-            var enumValues = Enum.GetValues(typeof(Status)) as Status[];
-            if (enumValues == null)
-                return null;
-
-            foreach (var enumValue in enumValues)
-            {
-                // Create a new SelectListItem element and set its 
-                // Value and Text to the enum value and description.
-                selectList.Add(new SelectListItem
-                {
-                    Value = enumValue.ToString(),
-                    // GetIndustryName just returns the Display.Name value
-                    // of the enum - check out the next chapter for the code of this function.
-                    //Text = GetIndustryName(enumValue)
-                });
-            }
-
-            return selectList;
-        }
 
 
         // GET: Volunteers/Delete/5
@@ -223,7 +231,7 @@ namespace VolunteerSystem.Controllers
 
             var volunteer = await _context.Volunteers
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.VolunteerID == id);
             if (volunteer == null)
             {
                 return NotFound();
@@ -246,21 +254,21 @@ namespace VolunteerSystem.Controllers
         {
             var volunteer = await _context.Volunteers
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
-            
-            if (volunteer == null) 
+                .SingleOrDefaultAsync(m => m.VolunteerID == id);
+
+            if (volunteer == null)
             {
                 return RedirectToAction("Index");
             }
 
-            try 
+            try
             {
                 _context.Volunteers.Remove(volunteer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
 
-            } 
-            catch (DbUpdateException /* ex */) 
+            }
+            catch (DbUpdateException /* ex */)
             {
                 //Log the error (uncomment ex variable name and write a log.)
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
@@ -270,7 +278,7 @@ namespace VolunteerSystem.Controllers
 
         private bool VolunteerExists(int id)
         {
-            return _context.Volunteers.Any(e => e.ID == id);
+            return _context.Volunteers.Any(e => e.VolunteerID == id);
         }
     }
 }

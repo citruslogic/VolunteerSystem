@@ -6,17 +6,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VolunteerSystem.Models
 {
+    public enum Status
+    {
+        Approved,
+        Unapproved,
+        Pending
+    }
+
     public class Volunteer
     {
        
-
-        public int ID { get; set; }
-        public int StatusID { get; set; }
+        [Key]
+        public int VolunteerID { get; set; }
         [Required]
         [StringLength(50)]
         [Display(Name = "First Name")]
-
-
 
         public string FirstName { get; set; }
         [Required]
@@ -32,7 +36,6 @@ namespace VolunteerSystem.Models
                 return FirstName + " " + LastName;
             }
         }
-
         public string UserName { get; set; }
 
         public string Password { get; set; }
@@ -68,13 +71,11 @@ namespace VolunteerSystem.Models
         [Display(Name = "SS Card On File")]
         public Boolean SSCardOnFile { get; set; }
 
-
         [Display(Name = "Status")]
         public Status Status { get; set; }
 
-        
 
-        
+
 
     }
 }

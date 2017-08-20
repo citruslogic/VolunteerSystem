@@ -20,11 +20,11 @@ namespace VolunteerSystem.Data
             {
                 new Volunteer{FirstName="Carson", LastName="Timothy", Address="101 Dundee Dr.", UserName="TCarson",
                     Password="whatever1", HomePhone="544-5440", CellPhone="444-0550", WorkPhone="100-2222",
-                   Email="TCarson@imail.com", Status=Status.Approved},
+                   Email="TCarson@imail.com"},
 
                 new Volunteer{FirstName="Fred", LastName="Taylor", Address="2011 Bent Oak Dr.", UserName="FTaylor",
                     Password="SomePass4U", HomePhone="555-5555", CellPhone="444-4444", WorkPhone="111-1111",
-                    Email="FTaylor@noemail.com", Status=Status.Pending}
+                    Email="FTaylor@noemail.com"}
             };
 
             foreach (Volunteer v in volunteers)
@@ -32,6 +32,8 @@ namespace VolunteerSystem.Data
                 context.Volunteers.Add(v);
             }
             context.SaveChanges();
+
+            
 
             var opportunities = new Opportunity[]
             {
@@ -53,7 +55,7 @@ namespace VolunteerSystem.Data
             var opportunityVolunteers = new OpportunityVolunteer[]
             {
                 new OpportunityVolunteer { OpportunityID = opportunities.Single(o => o.OpportunityName == "Community Outreach" ).OpportunityID,
-                        VolunteerID = volunteers.Single(v => v.LastName == "Timothy").ID}
+                        VolunteerID = volunteers.Single(v => v.LastName == "Timothy").VolunteerID}
             };
 
             foreach (OpportunityVolunteer ov in opportunityVolunteers)
