@@ -20,7 +20,7 @@ namespace VolunteerSystem.Controllers
             _context = context;
         }
 
-        private void SetViewBagStatusType(Status selectedStatus)
+        private void SetViewBagStatusType(Status selectedStatus = Status.Pending)
         {
 
             IEnumerable<Status> values = Enum.GetValues(typeof(Status))
@@ -123,6 +123,8 @@ namespace VolunteerSystem.Controllers
         // GET: Volunteers/Create
         public IActionResult Create()
         {
+            SetViewBagStatusType();
+
             return View();
         }
 
@@ -140,6 +142,7 @@ namespace VolunteerSystem.Controllers
                 if (ModelState.IsValid)
                 {
                     _context.Add(volunteer);
+            
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -153,7 +156,8 @@ namespace VolunteerSystem.Controllers
 
             }
 
-            SetViewBagStatusType(volunteer.Status);
+            SetViewBagStatusType();
+
 
             return View(volunteer);
         }
